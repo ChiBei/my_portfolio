@@ -109,7 +109,7 @@ export default function PortfolioWebsite() {
   const products = [
     {
       title: "Android 软件开发",
-      desc: "独立开发并运营 4 款 Android 应用（累计 4w+ 下载 / 独立全栈产品运营）",
+      desc: "独立开发并运营 4 款 Android 应用（累计 5w+ 下载 / 独立全栈产品运营）",
       points: [
         "从 0 到 1 完成产品设计、视觉设计与客户端开发实现",
         "熟练掌握 Kotlin / Jetpack 现代 Android 核心技术栈体系",
@@ -171,7 +171,7 @@ type LogoContainerProps = {
           <div>
             <h1 className="text-lg font-bold tracking-wide">陈钢</h1>
             <p className="text-[11px] text-zinc-400">
-              全栈开发工程师 · 智能制造与产品方向
+              智能制造与产品方向
             </p>
           </div>
           <nav className="hidden md:flex gap-6 text-xs text-zinc-300">
@@ -190,7 +190,7 @@ type LogoContainerProps = {
           {/* 左侧主内容 */}
           <div className="max-w-3xl">
             <div className="text-xs px-3 py-1 border border-white/10 bg-white/5 rounded-full mb-5 text-zinc-300 inline-block tracking-wide">
-              一名懂技术落地、具备完整闭环的产品型全栈研发
+              一名懂技术落地、具备完整闭环的产品型研发
             </div>
             <h2 className="text-5xl md:text-6xl font-black leading-tight tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
               产品驱动工程开发
