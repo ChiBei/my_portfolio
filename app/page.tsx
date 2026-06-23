@@ -195,10 +195,10 @@ type LogoContainerProps = {
             <h2 className="text-5xl md:text-6xl font-black leading-tight tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
               产品驱动工程开发
               <br />
-              智能制造与全栈实践
+              智能制造研发实践
             </h2>
             <p className="mt-6 text-zinc-400 leading-7 text-sm max-w-xl">
-              用技术构建可落地的软硬件实体。深谙 Vibe Coding 时代的开发者进化论，善用数据、算法与全栈工具链实现高效工业改造与敏捷产品交付。
+              用技术构建可落地的软硬件实体。深谙 Vibe Coding 时代的开发者进化论，善用数据、算法与开发工具链实现高效工业改造与敏捷产品交付。
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4 max-w-md border-t border-white/5 pt-6 text-xs text-zinc-400">
