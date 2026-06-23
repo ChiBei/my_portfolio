@@ -101,7 +101,7 @@ export default function PortfolioWebsite() {
           name: "面向工业无损检测场景，融合红外热成像与智能算法，实现钢轨内部缺陷的精准检测。",
           img: "/images/patent_abstract.png"
         },
-        
+
       ]
     },
   ];
@@ -141,15 +141,15 @@ export default function PortfolioWebsite() {
   ];
 
   type Org = {
-  name: string;
-  logo: string;
-  padding: string;
-  fit: string;
-};
+    name: string;
+    logo: string;
+    padding: string;
+    fit: string;
+  };
 
-type LogoContainerProps = {
-  org: Org;
-};
+  type LogoContainerProps = {
+    org: Org;
+  };
 
   // 💡 提炼出的通用 Logo 容器：干脆利落地直接渲染图片资产
   const LogoContainer = ({ org }: LogoContainerProps) => (
@@ -398,10 +398,10 @@ type LogoContainerProps = {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           {[
-            ["后端与算法开发", "Python / Django / Java / C++"],
-            ["现代全栈与工程", "Android / Kotlin / Linux / Docker / Shell"],
-            ["人工智能与工程", "CNN / OpenCV / Python 数据分析 / Vibe Coding"],
-            ["三维造型与工业设计", "Blender / Plasticity / SolidWorks / Illustrator / Figma"],
+            ["项目协作与工程管理", "Git / Jira / Trello / Xmind / Drawio / Notion"],
+            ["现代全栈与后端开发", "Python / Django / Java / C++ / Android / Kotlin / MySQL / Linux / Docker / Shell"],
+            ["人工智能与计算机视觉", "CNN / YOLO / OpenCV / Pandas / Matplotlib / PINN / Vibe Coding"],
+            ["工业设计与产品建模", "Blender / Plasticity / SolidWorks / Illustrator / Figma"]
           ].map(([t, c]) => (
             <div key={t} className="border border-white/10 rounded-xl p-5 bg-white/5 flex flex-col justify-between hover:border-white/20 transition-colors">
               <p className="text-zinc-400 mb-3 font-bold tracking-wide">{t}</p>
