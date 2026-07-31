@@ -398,7 +398,7 @@ export default function PortfolioWebsite() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           {[
-            ["项目协作与工程管理", "Git / Jira / Trello / Xmind / Drawio / Notion"],
+            ["项目协作与工程管理", "Git / Jira / Postman/ Trello / Xmind / Drawio / Notion"],
             ["现代全栈与后端开发", "Python / Django / Java / C++ / Android / Kotlin / MySQL / Linux / Docker / Shell"],
             ["人工智能与计算机视觉", "CNN / YOLO / OpenCV / Pandas / Matplotlib / PINN / Vibe Coding"],
             ["工业设计与产品建模", "Blender / Plasticity / SolidWorks / Illustrator / Figma"]
@@ -434,7 +434,7 @@ export default function PortfolioWebsite() {
             </div>
             <div>
               <p className="text-zinc-500 mb-1.5 font-medium">联系电话</p>
-              <p className="font-bold text-zinc-200 tracking-wide text-[13px] font-mono">+86 1XXXXXX</p>
+              <p className="font-bold text-zinc-200 tracking-wide text-[13px] font-mono">+86 17360268450</p>
             </div>
           </div>
         </div>
