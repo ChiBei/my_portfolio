@@ -400,7 +400,7 @@ export default function PortfolioWebsite() {
           {[
             ["项目协作与工程管理", "Git / Jira / Postman/ Trello / Xmind / Drawio / Notion"],
             ["现代全栈与后端开发", "Python / Django / Java / C++ / Android / Kotlin / MySQL / Linux / Docker / Shell"],
-            ["人工智能与计算机视觉", "CNN / YOLO / OpenCV / Pandas / Matplotlib / PINN / Vibe Coding"],
+            ["人工智能与计算机视觉", "CNN / YOLO / OpenCV / Pandas / Matplotlib / PINN / LLM / Vibe Coding"],
             ["工业设计与产品建模", "Blender / Plasticity / SolidWorks / Illustrator / Figma"]
           ].map(([t, c]) => (
             <div key={t} className="border border-white/10 rounded-xl p-5 bg-white/5 flex flex-col justify-between hover:border-white/20 transition-colors">
