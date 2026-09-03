@@ -634,25 +634,20 @@ export default function PortfolioWebsite() {
                 {/* 内容 */}
                 <div className="grid lg:grid-cols-[350px_minmax(0,1fr)]">
                   {/* 左文字 */}
-                  <div className="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
-                    {stage.points ? (
-                      <div className="space-y-2.5">
-                        {stage.points.map((point, index) => (
-                          <div
-                            key={index}
-                            className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
-                          >
-                            <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-600" />
 
-                            <p>{point}</p>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm leading-6.5 text-slate-600">
-                        {stage.text}
-                      </p>
-                    )}
+                  <div className="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
+                    <div className="space-y-2.5">
+                      {stage.points.map((point, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                        >
+                          <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-600" />
+
+                          <p>{point}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* 右侧两张图并排 */}
