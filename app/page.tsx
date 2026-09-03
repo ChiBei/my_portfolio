@@ -1,144 +1,352 @@
-import React from 'react';
+import React from "react";
 
 export default function PortfolioWebsite() {
+  /* =========================================================
+   * 基础数据
+   * ======================================================= */
 
-  // 1. 统一管理所有组织（学校/实验室/公司）的视觉修正参数与资产配置
   const orgs = {
     dlut: {
       name: "大连理工大学",
       logo: "/images/dlut_logo.png",
       padding: "p-1",
-      fit: "object-contain"
+      fit: "object-contain",
     },
     scu: {
       name: "四川大学",
       logo: "/images/scu_logo.png",
       padding: "p-1",
-      fit: "object-contain"
-    },
-    haiyang: {
-      name: "江苏海阳化纤有限公司",
-      logo: "/images/haiyang_logo.png",
-      padding: "p-0",
-      fit: "object-cover"
+      fit: "object-contain",
     },
     zili: {
       name: "深圳字立科技有限公司",
       logo: "/images/zili_logo.jpg",
       padding: "p-1",
-      fit: "object-contain"
+      fit: "object-contain",
     },
   };
 
-  // 2. 抽离教育经历数据
   const educations = [
-    { org: orgs.dlut, degree: "计算机科学与技术 · 第二学士", time: "2020.09 - 2022.06" },
-    { org: orgs.dlut, degree: "应用化学 · 本科", time: "2016.09 - 2020.06" }
+    {
+      org: orgs.dlut,
+      title: "计算机科学与技术 · 第二学士",
+      time: "2020.09 — 2022.06",
+    },
+    {
+      org: orgs.dlut,
+      title: "应用化学 · 本科",
+      time: "2016.09 — 2020.06",
+    },
   ];
 
-  // 3. 抽离工作经历数据
   const experiences = [
     {
       org: orgs.scu,
-      title: "智能制造实验室 · 研发工程师",
-      time: "2023.08 - 2025.03",
-      badge: "工业智能"
+      company: "四川大学机械学院智能制造实验室",
+      title: "产品 / 项目 / 技术负责人",
+      time: "2023.08 — 2025.03",
     },
     {
       org: orgs.zili,
+      company: "深圳字立科技有限公司",
       title: "后台开发工程师",
-      time: "2022.07 - 2023.02",
-      badge: "微服务/CGI"
-    }
-  ];
-
-  const projects = [
-    {
-      title: "化工厂 智能改造升级项目",
-      image: "/images/project_all.jpg",
-      partners: [orgs.scu, orgs.haiyang],
-      desc: "四川大学机械工程学院智能制造实验室 · 校企合作",
-      details: [
-        "核心项目：独立负责储布架水平检测和布料视觉检测两大系统，从需求调研到现场部署全流程。",
-        "技术成果：完成多轮迭代，部署多条生产线；抽离通用模块库，支撑后续项目复用。",
-        "项目对接：负责与合作企业的全流程沟通，涵盖现场需求调研、技术方案对接、进度汇报及交付验收管理。",
-      ],
-      tags: ["Python", "Django", "Linux", "嵌入式", "OpenCV"],
-      modules: [
-        {
-          name: "前期现场实况调研测试系统部署图。",
-          img: "/images/imu_install.jpg"
-        },
-        {
-          name: "视觉检测系统现场部署图。",
-          img: "/images/cam_install.jpg"
-        },
-        {
-          name: "智能传感平台的多源硬件采集与数据处理系统分层架构拓扑图",
-          img: "/images/mr_project_all.jpg"
-        },
-        {
-          name: "智能传感平台的完整数据流拓扑：\n分布式采集 ➔ 现场调试 ➔ 骨干传输 ➔ 服务器与多端",
-          img: "/images/mr_project_data.jpg"
-        },
-        {
-          name: "江苏海阳化纤工厂的锦纶浸胶全流程\n前道放卷与储备段 ➔ 核心浸胶与热定型段 ➔ 后道质检与全自动收卷",
-          img: "/images/factory_procedure.png"
-        },
-        {
-          name: "布料视觉检测系统一种现场部署方案示意图。\n该检测点位采用正面工业光源与海康威视面阵相机阵列进行布料表面图像采集。",
-          img: "/images/cam.png"
-        },
-        {
-          name: "基于二维快速傅里叶变换（FFT）的布料视觉检测算法流程图。\n图像经频域特征提取后完成缺陷识别、定位及结果输出。",
-          img: "/images/fabric_detect.png"
-        },
-        {
-          name: "核心参与并独立撰写该项目衍生发明专利。\n在实际申请中，前两位发明人为实验室指导老师，本人为第三发明人（实际撰写人）。",
-          img: "/images/patent.jpg"
-        },
-        {
-          name: "面向工业无损检测场景，融合红外热成像与智能算法，实现钢轨内部缺陷的精准检测。",
-          img: "/images/patent_abstract.png"
-        },
-
-      ]
+      time: "2022.07 — 2023.02",
     },
   ];
+
+  /* =========================================================
+   * 人物核心标签
+   * ======================================================= */
+
+  const coreTags = [
+    {
+      text: "B端产品方向",
+      className: "border-blue-200 bg-blue-50 text-blue-800",
+    },
+    {
+      text: "工业智能制造产品实践",
+      className: "border-teal-200 bg-teal-50 text-teal-800",
+    },
+    {
+      text: "0 → 1产品落地",
+      className: "border-violet-200 bg-violet-50 text-violet-800",
+    },
+    {
+      text: "技术背景",
+      className: "border-amber-200 bg-amber-50 text-amber-800",
+    },
+  ];
+
+  /* =========================================================
+   * 核心项目四阶段
+   *
+   * 产品定义：
+   *   imu_install
+   *   factory_procedure
+   *
+   * 方案评估：
+   *   project_all
+   *   mr_project_data
+   *
+   * 产品化：
+   *   fabric_detect
+   *   cam
+   *
+   * 交付：
+   *   cam_install
+   *   patent
+   * ======================================================= */
+
+  const stages = [
+    {
+      no: "01",
+      title: "产品定义",
+      headline: "从现场问题出发，明确产品方向",
+      points: [
+        "深入化工厂产线开展现场调研，识别布料瑕疵、储布架姿态异常等核心痛点。将不同问题整合为统一监测系统产品，明确产品方向与核心功能。输出产品路线文档，形成后续方案设计与落地依据。",
+      ],
+      images: [
+        {
+          src: "/images/imu_install.jpg",
+          title: "现场调研",
+          desc: "储布架实际部署环境。",
+        },
+        {
+          src: "/images/factory_procedure.png",
+          title: "生产流程梳理示意图",
+          desc: "定位在线监测实际业务环节。",
+        },
+      ],
+    },
+
+    {
+      no: "02",
+      title: "方案评估",
+      headline: "在精度、部署与成本之间做取舍",
+      points: [
+        "围绕检测精度、部署条件与成本目标，完成软硬件方案选型与评估。自主决策采用“工业面阵相机阵列 + STM32-IMU”方案。",
+        "单条产线成本降低约40%。",
+      ],
+      images: [
+        {
+          src: "/images/mr_project_data.jpg",
+          title: "数据流拓扑示意图",
+          desc: "系统采集、传输与服务端数据链路。",
+        },
+        {
+          src: "/images/cam.png",
+          title: "视觉检测硬件组装示意图",
+          desc: "工业相机方案现场部署示意图。",
+        },
+      ],
+    },
+
+    {
+      no: "03",
+      title: "产品化",
+      headline: "从定制化项目转向可复用产品套件",
+      points: [
+        "梳理多条产线共性需求，将设备管理、异常监测、数据看板等能力抽离为标准化模块，推动产品由“定制化项目”向“可复用产品套件”转型。",
+        "第二条产线部署周期由2个月缩短至2周。",
+        "预留数据积累与数字孪生场景的扩展空间。",
+      ],
+      images: [
+        {
+          src: "/images/project_all.jpg",
+          title: "产品模块拆分示意图",
+          desc: "将定制化项目拆分为可复用模块。",
+        },
+        {
+          src: "/images/fabric_detect.png",
+          title: "视觉检测能力标准化",
+          desc: "将布料外观检测能力抽象为标准化算法流程，降低不同产线的重复开发成本。",
+        },
+
+
+      ],
+    },
+
+    {
+      no: "04",
+      title: "交付",
+      headline: "持续迭代，推动产品进入真实产线",
+      points: [
+        "协调企业、导师及供应商等多方资源，推进现场部署与项目交付。",
+        "完成4轮现场迭代部署，根据产线反馈持续优化方案。",
+        "产品已稳定运行于8条产线。",
+      ],
+      images: [
+        {
+          src: "/images/cam_install.jpg",
+          title: "现场部署",
+          desc: "视觉系统现场部署。",
+        },
+        {
+          src: "/images/patent.jpg",
+          title: "项目成果",
+          desc: "项目衍生知识产权成果。",
+        },
+      ],
+    },
+  ];
+
+  /* =========================================================
+   * 独立产品实践
+   * ======================================================= */
 
   const products = [
     {
-      title: "Android 软件开发",
-      desc: "独立开发并运营 4 款 Android 应用（累计 5w+ 下载 / 独立全栈产品运营）",
-      points: [
-        "从 0 到 1 完成产品设计、视觉设计与客户端开发实现",
-        "熟练掌握 Kotlin / Jetpack 现代 Android 核心技术栈体系",
-        "基于用户真实反馈与酷安等渠道评价持续优化体验与留存",
+      title: "游戏周边产品",
+      period: "2025.03 — 至今",
+      featured: true,
+      description:
+        "针对热门游戏IP进行玩家需求调研，挖掘实体周边产品机会，独立完成产品构思、3D建模设计、制作及后处理等全流程。",
+      stats: [
+        ["盈利", "产品已实现盈利"],
+        ["复购", "客户好评及复购"],
       ],
-      tags: ["Android", "Kotlin", "Java", "Jetpack", "Illustrator", "Figma"],
+      tags: [
+        {
+          text: "需求调研",
+          className: "border-blue-200 bg-blue-50 text-blue-800",
+        },
+        {
+          text: "产品构思",
+          className: "border-teal-200 bg-teal-50 text-teal-800",
+        },
+        {
+          text: "3D建模设计",
+          className: "border-violet-200 bg-violet-50 text-violet-800",
+        },
+        {
+          text: "制作及后处理",
+          className: "border-amber-200 bg-amber-50 text-amber-800",
+        },
+      ],
       images: [
-        { src: "/images/app1.jpg", wide: true },
-        { src: "/images/app2.jpg", wide: false },
-        { src: "/images/app3.jpg", wide: false },
+        {
+          src: "/images/print1.jpg",
+          title: "产品设计",
+        },
+        {
+          src: "/images/print2.jpg",
+          title: "产品制作",
+        },
+        {
+          src: "/images/print3.jpg",
+          title: "产品反馈-1",
+        },
+        {
+          src: "/images/print4.jpg",
+          title: "产品反馈-2",
+        },
       ],
     },
     {
-      title: "3D 打印产品实践",
-      desc: "通过线上网店验证真实产品需求，打通工程软硬件闭环并实现稳定正向现金流",
-      points: [
-        "全链路交付：概念设计 ➔ Blender/SolidWorks 建模 ➔ 切片调参 ➔ 实体产品后处理",
-        "核心攻关：针对结构件进行材料与工艺参数优化，极限提升强度、精度与打印成功率",
-        "敏捷迭代：基于用户使用反馈与工业级装配需求，快速迭代机械结构模型",
+      title: "Android应用",
+      period: "2017 — 至今",
+      featured: false,
+      description:
+        "独立完成4款 Android 应用的产品定位、功能设计、开发上线及运营，根据用户反馈优化产品功能。",
+      stats: [
+        ["5万+", "累计下载"],
+        ["9.6", "最高评分"],
       ],
-      tags: ["3D Printing", "Blender", "Plasticity", "SolidWorks", "Bambu Studio"],
+      tags: [
+        {
+          text: "产品定位",
+          className: "border-blue-200 bg-blue-50 text-blue-800",
+        },
+        {
+          text: "功能设计",
+          className: "border-teal-200 bg-teal-50 text-teal-800",
+        },
+        {
+          text: "开发上线",
+          className: "border-violet-200 bg-violet-50 text-violet-800",
+        },
+        {
+          text: "运营",
+          className: "border-amber-200 bg-amber-50 text-amber-800",
+        },
+      ],
       images: [
-        { src: "/images/print1.jpg", wide: true },
-        { src: "/images/print2.jpg", wide: true },
-        { src: "/images/print3.jpg", wide: false },
-        { src: "/images/print4.jpg", wide: false },
+        {
+          src: "/images/app1.jpg",
+          title: "应用管理后台界面",
+        },
+        {
+          src: "/images/app2.jpg",
+          title: "应用持续迭代功能",
+        },
+        {
+          src: "/images/app3.jpg",
+          title: "应用界面",
+        },
       ],
     },
   ];
+
+  /* =========================================================
+   * 专业技能
+   * ======================================================= */
+
+  const skillGroups = [
+    {
+      title: "产品与项目管理",
+      className: "border-blue-200 bg-blue-50",
+      titleClass: "text-blue-950",
+      dotClass: "bg-blue-600",
+      items: [
+        "需求调研与用户访谈",
+        "需求分析与优先级排期",
+        "产品功能规划",
+        "原型设计（Axure / Figma）",
+        "架构流程梳理（Drawio / Xmind）",
+        "敏捷迭代管理（Worktile）",
+      ],
+    },
+    {
+      title: "技术理解",
+      className: "border-teal-200 bg-teal-50",
+      titleClass: "text-teal-950",
+      dotClass: "bg-teal-600",
+      items: [
+        "后端研发与数据库设计",
+        "微服务架构与接口逻辑",
+        "技术方案与开发工作量评估",
+      ],
+    },
+    {
+      title: "开发基础",
+      className: "border-violet-200 bg-violet-50",
+      titleClass: "text-violet-950",
+      dotClass: "bg-violet-600",
+      items: [
+        "后端：Python、Django、C++",
+        "移动端：Android、Java、Kotlin、Jetpack",
+        "人工智能：CNN / YOLO / PINN、Pandas / Matplotlib",
+        "数据库：MySQL、Navicat",
+        "其他：Git、Linux、Postman、Docker、Shell",
+      ],
+    },
+    {
+      title: "其他技能",
+
+      className: "border-amber-200 bg-amber-50",
+      titleClass: "text-amber-950",
+      dotClass: "bg-amber-600",
+      items: [
+        "英语：CET-6",
+        "工具：Notion、Trello",
+        "设计建模：Blender、Bambu Studio、Plasticity",
+      ],
+    },
+  ];
+
+  /* =========================================================
+   * 通用组件
+   * ======================================================= */
 
   type Org = {
     name: string;
@@ -147,305 +355,695 @@ export default function PortfolioWebsite() {
     fit: string;
   };
 
-  type LogoContainerProps = {
-    org: Org;
+  type ImageData = {
+    src: string;
+    title: string;
+    desc?: string;
   };
 
-  // 💡 提炼出的通用 Logo 容器：干脆利落地直接渲染图片资产
-  const LogoContainer = ({ org }: LogoContainerProps) => (
-    <div className={`w-9 h-9 flex-shrink-0 overflow-hidden rounded-lg bg-white flex items-center justify-center shadow shadow-black/10 ${org.padding}`}>
-      <img src={org.logo} alt={org.name} className={`w-full h-full ${org.fit}`} />
+  const Logo = ({ org }: { org: Org }) => (
+    <div
+      className={`flex h-8 w-8 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-white ${org.padding}`}
+    >
+      <img
+        src={org.logo}
+        alt={org.name}
+        className={`h-full w-full ${org.fit}`}
+      />
+    </div>
+  );
+
+  const SectionPill = ({
+    children,
+    tone = "blue",
+  }: {
+    children: React.ReactNode;
+    tone?: "blue" | "teal" | "violet";
+  }) => {
+    const styles = {
+      blue: {
+        box: "border-blue-200 bg-blue-50",
+        dot: "bg-blue-600",
+        text: "text-blue-800",
+      },
+      teal: {
+        box: "border-teal-200 bg-teal-50",
+        dot: "bg-teal-600",
+        text: "text-teal-800",
+      },
+      violet: {
+        box: "border-violet-200 bg-violet-50",
+        dot: "bg-violet-600",
+        text: "text-violet-800",
+      },
+    };
+
+    const style = styles[tone];
+
+    return (
+      <div
+        className={`mb-4 inline-flex items-center rounded-full border px-3.5 py-1.5 ${style.box}`}
+      >
+        <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
+
+        <span className={`ml-2 text-xs font-bold ${style.text}`}>
+          {children}
+        </span>
+      </div>
+    );
+  };
+
+  const ImageCard = ({
+    image,
+    className = "",
+  }: {
+    image: ImageData;
+    className?: string;
+  }) => (
+    <div
+      className={`flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white ${className}`}
+    >
+      <div className="flex min-h-0 flex-1 items-center justify-center p-2.5">
+        <img
+          src={image.src}
+          alt={image.title}
+          className="block max-h-full w-full object-contain"
+        />
+      </div>
+
+      <div className="border-t border-slate-200 px-3 py-2.5">
+        <p className="text-xs font-bold text-slate-700">
+          {image.title}
+        </p>
+
+        {image.desc && (
+          <p className="mt-0.5 text-[11px] leading-4.5 text-slate-500">
+            {image.desc}
+          </p>
+        )}
+      </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden scroll-smooth">
+    <div className="min-h-screen bg-[#f5f9fd] text-slate-900">
+      {/* =====================================================
+       * 背景
+       * =================================================== */}
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_12%_0%,rgba(37,99,235,0.035),transparent_28%),radial-gradient(circle_at_88%_8%,rgba(20,184,166,0.025),transparent_24%),radial-gradient(circle_at_78%_75%,rgba(139,92,246,0.02),transparent_25%)]" />
 
-      {/* Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.10),transparent_35%)]" />
-      <div className="fixed inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:56px_56px]" />
+      {/* =====================================================
+       * 导航
+       * =================================================== */}
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
+        <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-5 sm:px-6">
+          <a
+            href="#hero"
+            className="text-sm font-bold tracking-wide text-[#102a43]"
+          >
+            陈钢
+          </a>
 
-      {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div>
-            <h1 className="text-lg font-bold tracking-wide">陈钢</h1>
-            <p className="text-[11px] text-zinc-400">
-              智能制造与产品方向
-            </p>
-          </div>
-          <nav className="hidden md:flex gap-6 text-xs text-zinc-300">
-            <a href="#hero" className="hover:text-white transition-colors">首页</a>
-            <a href="#projects" className="hover:text-white transition-colors">项目展示</a>
-            <a href="#products" className="hover:text-white transition-colors">产品实践</a>
-            <a href="#contact" className="hover:text-white transition-colors">联系方式</a>
+          <nav className="hidden items-center gap-6 text-xs font-medium text-slate-500 md:flex">
+            <a
+              href="#project"
+              className="transition-colors hover:text-[#102a43]"
+            >
+              核心项目
+            </a>
+
+            <a
+              href="#practice"
+              className="transition-colors hover:text-[#102a43]"
+            >
+              独立产品
+            </a>
+
+            <a
+              href="#skills"
+              className="transition-colors hover:text-[#102a43]"
+            >
+              专业技能
+            </a>
+
+            <a
+              href="#contact"
+              className="transition-colors hover:text-[#102a43]"
+            >
+              联系方式
+            </a>
           </nav>
         </div>
       </header>
 
-      {/* Hero */}
-      <section id="hero" className="max-w-6xl mx-auto px-6 pt-28 pb-14">
-        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+      {/* =====================================================
+       * Hero
+       * =================================================== */}
+      <section
+        id="hero"
+        className="mx-auto max-w-6xl px-5 pb-6 pt-18 sm:px-6 sm:pb-7"
+      >
+        <h1 className="max-w-5xl text-[40px] font-black leading-[1.04] tracking-[-0.045em] text-[#102a43] sm:text-[56px]">
+          把真实问题
+          <br />
+          <span className="text-slate-600">
+            做成真正落地的产品
+          </span>
+        </h1>
 
-          {/* 左侧主内容 */}
-          <div className="max-w-3xl">
-            <div className="text-xs px-3 py-1 border border-white/10 bg-white/5 rounded-full mb-5 text-zinc-300 inline-block tracking-wide">
-              一名懂技术落地、具备完整闭环的产品型研发
-            </div>
-            <h2 className="text-5xl md:text-6xl font-black leading-tight tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
-              产品驱动工程开发
-              <br />
-              智能制造研发实践
-            </h2>
-            <p className="mt-6 text-zinc-400 leading-7 text-sm max-w-xl">
-              用技术构建可落地的软硬件实体。深谙 Vibe Coding 时代的开发者进化论，善用数据、算法与开发工具链实现高效工业改造与敏捷产品交付。
-            </p>
-
-            <div className="mt-8 grid grid-cols-2 gap-4 max-w-md border-t border-white/5 pt-6 text-xs text-zinc-400">
-              <div>
-                <p className="text-zinc-600 mb-0.5">现居住地</p>
-                <p className="font-medium text-zinc-300">四川省成都市</p>
-              </div>
-              <div>
-                <p className="text-zinc-600 mb-0.5">工作经验</p>
-                <p className="font-medium text-zinc-300">2 年+ 研发交付经验</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 右侧综合简历信息卡片 */}
-          <div className="border border-white/10 bg-white/5 rounded-2xl p-6 backdrop-blur space-y-5 shadow-2xl shadow-black/50">
-
-            {/* 教育经历 */}
-            <div>
-              <h3 className="text-xs font-bold text-zinc-500 mb-3 tracking-wider uppercase">教育经历</h3>
-              <div className="space-y-2.5 text-xs">
-                {educations.map((edu, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-2 rounded-xl">
-                    <LogoContainer org={edu.org} />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-baseline">
-                        <p className="font-bold text-zinc-200 text-[11px] truncate">{edu.org.name}</p>
-                        <span className="text-[9px] text-zinc-500 font-mono flex-shrink-0">{edu.time}</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 mt-0.5 truncate">{edu.degree}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border-t border-white/5" />
-
-            {/* 工作经历 */}
-            <div>
-              <h3 className="text-xs font-bold text-zinc-500 mb-3 tracking-wider uppercase">工作经历</h3>
-              <div className="space-y-2.5 text-xs">
-                {experiences.map((exp, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-2 rounded-xl">
-                    <LogoContainer org={exp.org} />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-baseline">
-                        <p className="font-bold text-zinc-200 text-[11px] truncate">{exp.org.name}</p>
-                        <span className="text-[9px] text-zinc-500 font-mono flex-shrink-0">{exp.time}</span>
-                      </div>
-                      <div className="flex items-center justify-between mt-0.5">
-                        <p className="text-[10px] text-zinc-400 truncate">{exp.title}</p>
-                        <span className="text-[8px] bg-zinc-800 text-zinc-400 px-1 py-0.5 rounded border border-white/5 flex-shrink-0 font-mono">{exp.badge}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+        <div className="mt-4 flex flex-wrap gap-2">
+          {coreTags.map((tag) => (
+            <span
+              key={tag.text}
+              className={`rounded-full border px-3.5 py-1.5 text-xs font-medium ${tag.className}`}
+            >
+              {tag.text}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 py-16 border-t border-white/5">
-        <div className="mb-10">
-          <p className="text-[10px] text-zinc-500 tracking-[0.25em]">PROJECT SHOWCASE</p>
-          <h3 className="text-3xl font-black mt-1">核心项目成果展示</h3>
-          <p className="mt-3 text-sm text-zinc-400 max-w-xl">
-            提供简历纸面文字之外的硬核现场部署方案、算法图纸与衍生发明专利支撑。
-          </p>
-        </div>
+      {/* =====================================================
+       * 核心项目
+       * =================================================== */}
+      <section
+        id="project"
+        className="border-t border-slate-200 bg-white"
+      >
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10">
+          <SectionPill tone="blue">核心项目</SectionPill>
 
-        <div className="space-y-20">
-          {projects.map((project) => (
-            <div key={project.title} className="space-y-8">
-              <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-stretch">
-                <div className="rounded-xl overflow-hidden border border-white/10 bg-zinc-900">
-                  <img src={project.image} className="w-full h-full object-cover min-h-[400px]" alt="项目主图" />
+          {/* =================================================
+           * 项目总览
+           * ================================================= */}
+          <div className="grid gap-3 lg:grid-cols-[0.85fr_1.15fr]">
+            {/* 左：项目名称、工作、成果 */}
+            <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">
+              <h2 className="text-[34px] font-black leading-[1.05] tracking-[-0.035em] text-[#102a43] sm:text-[38px]">
+                化工厂智能
+                <br />
+                产线在线监测系统
+              </h2>
+
+              <p className="mt-3 text-[14px] font-semibold leading-5 text-[#315d82]">
+                主导系统从需求调研、方案设计到规模化部署的全流程落地。
+              </p>
+
+              <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-3">
+                  <p className="text-[25px] font-black text-[#12395b]">
+                    40%
+                  </p>
+
+                  <p className="mt-1 text-[11px] font-medium text-slate-600">
+                    单条产线成本降低
+                  </p>
                 </div>
 
-                <div className="border border-white/10 rounded-xl p-6 flex flex-col bg-white/5">
-                  <div className="inline-flex px-3 py-1 text-[11px] border border-white/10 bg-white/5 rounded-full mb-3 text-zinc-400 w-fit">
-                    校企深度合作
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-3">
+                  <p className="text-[21px] font-black text-[#12395b]">
+                    2月 → 2周
+                  </p>
+
+                  <p className="mt-1 text-[11px] font-medium leading-4 text-slate-600">
+                    第二条产线部署周期
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-teal-200 bg-teal-50 p-3">
+                  <p className="text-[25px] font-black text-[#17645f]">
+                    4轮
+                  </p>
+
+                  <p className="mt-1 text-[11px] font-medium text-slate-600">
+                    现场迭代部署
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-teal-200 bg-teal-50 p-3">
+                  <p className="text-[25px] font-black text-[#17645f]">
+                    8条
+                  </p>
+
+                  <p className="mt-1 text-[11px] font-medium text-slate-600">
+                    稳定运行产线
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 右：系统架构图 */}
+            <ImageCard
+              image={{
+                src: "/images/mr_project_all.jpg",
+                title: "系统架构示意图",
+                desc: "工业产线在线监测系统整体架构。",
+              }}
+              className="min-h-[340px]"
+            />
+          </div>
+
+          {/* =================================================
+           * 四阶段
+           * ================================================= */}
+          <div className="mt-3 space-y-2">
+            {stages.map((stage) => (
+              <article
+                key={stage.no}
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+              >
+                {/* 阶段标题 */}
+                <div className="flex items-center gap-3 border-b border-slate-200 px-4 py-3 sm:px-5">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#102a43]">
+                    <span className="text-xs font-black text-white">
+                      {stage.no}
+                    </span>
                   </div>
-                  <h4 className="text-2xl font-black leading-tight text-zinc-100">{project.title}</h4>
-                  <p className="mt-3 text-xs text-zinc-400">{project.desc}</p>
 
-                  <div className="my-4 border-t border-white/10" />
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-black text-slate-900 sm:text-xl">
+                      {stage.title}
+                    </h3>
 
-                  {/* 项目合作单位：优雅复用 Logo 容器组件 */}
-                  <div className="mb-5">
-                    <p className="text-zinc-500 mb-2 text-xs">联合研发与交付单位</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.partners.map((partner, pIdx) => (
-                        <div key={pIdx} className="flex items-center gap-2 bg-zinc-900/60 border border-zinc-800 p-1.5 rounded-xl shadow-inner">
-                          <LogoContainer org={partner} />
-                          <span className="font-bold text-zinc-300 text-[11px] pr-1.5">{partner.name}</span>
+                    <p className="mt-0.5 text-xs font-medium text-slate-500">
+                      {stage.headline}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 内容 */}
+                <div className="grid lg:grid-cols-[350px_minmax(0,1fr)]">
+                  {/* 左文字 */}
+                  <div className="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
+                    {stage.points ? (
+                      <div className="space-y-2.5">
+                        {stage.points.map((point, index) => (
+                          <div
+                            key={index}
+                            className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                          >
+                            <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-600" />
+
+                            <p>{point}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm leading-6.5 text-slate-600">
+                        {stage.text}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* 右侧两张图并排 */}
+                  <div className="bg-[#f6faff] p-3 sm:p-4">
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <ImageCard
+                        image={stage.images[0]}
+                        className="min-h-[220px]"
+                      />
+
+                      <ImageCard
+                        image={stage.images[1]}
+                        className="min-h-[220px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+       * 独立产品
+       * =================================================== */}
+      <section
+        id="practice"
+        className="border-t border-slate-200 bg-[#f3f8fc]"
+      >
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10">
+          <SectionPill tone="teal">独立产品实践</SectionPill>
+
+          {/* =================================================
+           * 游戏周边
+           * 左文字 / 右图片
+           * 横向大图
+           * 横向大图
+           * 竖向小图 | 竖向小图
+           * ================================================= */}
+          {products
+            .filter((product) => product.featured)
+            .map((product) => (
+              <article
+                key={product.title}
+                className="overflow-hidden rounded-2xl border border-teal-200 bg-white"
+              >
+                <div className="grid lg:grid-cols-[340px_minmax(0,1fr)]">
+                  {/* 左文字 */}
+                  <div className="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-teal-600 px-3 py-1 text-[11px] font-bold text-white">
+                        重点产品
+                      </span>
+
+                      <span className="text-xs text-slate-500">
+                        {product.period}
+                      </span>
+                    </div>
+
+                    <h2 className="mt-3 text-[30px] font-black tracking-tight text-[#102a43] sm:text-[32px]">
+                      {product.title}
+                    </h2>
+
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {product.description}
+                    </p>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      {product.stats.map(([value, label]) => (
+                        <div
+                          key={label}
+                          className="rounded-xl border border-teal-100 bg-teal-50 p-3"
+                        >
+                          <p className="text-lg font-black text-[#17645f]">
+                            {value}
+                          </p>
+
+                          <p className="mt-0.5 text-[11px] leading-4 text-slate-600">
+                            {label}
+                          </p>
                         </div>
                       ))}
                     </div>
-                  </div>
 
-                  <div className="space-y-2 text-xs text-zinc-300">
-                    <p className="text-zinc-500 mb-1">攻关核心职责</p>
-                    {project.details.map((item) => (
-                      <div key={item} className="leading-5">• {item}</div>
-                    ))}
-                  </div>
-
-                  <div className="mt-5">
-                    <p className="text-zinc-500 mb-2 text-xs">核心技术栈</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 bg-white/5 text-zinc-300">
-                          {tag}
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {product.tags.map((tag) => (
+                        <span
+                          key={tag.text}
+                          className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${tag.className}`}
+                        >
+                          {tag.text}
                         </span>
                       ))}
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div className="columns-1 md:columns-2 gap-4 space-y-4 [column-fill:_balance]">
-                {project.modules && project.modules.map((module, index) => (
-                  <div key={index} className="break-inside-avoid border border-white/10 rounded-lg overflow-hidden bg-white/5 flex flex-col">
-                    <img src={module.img} alt="模块技术图" className="w-full h-auto block bg-zinc-900/50" />
-                    <div className="p-3 border-t border-white/10">
-                      <p className="text-xs font-medium text-zinc-300 whitespace-pre-line leading-relaxed">
-                        {module.name}
+                  {/* 右图片 */}
+                  <div className="bg-[#f8fcfd] p-3 sm:p-4">
+                    <div className="space-y-2.5">
+                      {/* 横向大图 */}
+                      <ImageCard
+                        image={product.images[0]}
+                        className="min-h-[210px]"
+                      />
+
+                      {/* 横向大图 */}
+                      <ImageCard
+                        image={product.images[1]}
+                        className="min-h-[210px]"
+                      />
+
+                      {/* 竖向小图 | 竖向小图 */}
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <ImageCard
+                          image={product.images[2]}
+                          className="min-h-[145px]"
+                        />
+
+                        <ImageCard
+                          image={product.images[3]}
+                          className="min-h-[145px]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+
+          {/* =================================================
+           * Android
+           * 左文字 / 右图片
+           * 主图
+           * 小图 | 小图
+           * ================================================= */}
+          {products
+            .filter((product) => !product.featured)
+            .map((product) => (
+              <article
+                key={product.title}
+                className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white"
+              >
+                <div className="grid lg:grid-cols-[340px_minmax(0,1fr)]">
+                  {/* 左文字 */}
+                  <div className="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h2 className="text-[30px] font-black text-[#102a43]">
+                          {product.title}
+                        </h2>
+
+                        <p className="mt-1 text-xs text-slate-500">
+                          {product.period}
+                        </p>
+                      </div>
+
+                      <span className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[11px] font-medium text-violet-800">
+                        独立产品
+                      </span>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                      {product.description}
+                    </p>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      {product.stats.map(([value, label]) => (
+                        <div
+                          key={label}
+                          className="rounded-xl border border-blue-100 bg-blue-50 p-3"
+                        >
+                          <p className="text-lg font-black text-[#174a78]">
+                            {value}
+                          </p>
+
+                          <p className="mt-0.5 text-[11px] text-slate-500">
+                            {label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {product.tags.map((tag) => (
+                        <span
+                          key={tag.text}
+                          className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${tag.className}`}
+                        >
+                          {tag.text}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 右侧图片：
+                      主图
+                      小图 | 小图
+                  */}
+                  <div className="bg-[#f7faff] p-3 sm:p-4">
+                    <ImageCard
+                      image={product.images[0]}
+                      className="min-h-[270px]"
+                    />
+
+                    <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+                      <ImageCard
+                        image={product.images[1]}
+                        className="min-h-[150px]"
+                      />
+
+                      <ImageCard
+                        image={product.images[2]}
+                        className="min-h-[150px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+        </div>
+      </section>
+
+      {/* =====================================================
+       * 教育与工作经历
+       * =================================================== */}
+      <section className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10">
+          <SectionPill tone="violet">
+            教育与工作经历
+          </SectionPill>
+
+          <div className="grid gap-2.5 lg:grid-cols-2">
+            {/* 教育 */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
+              <h3 className="text-base font-black text-[#102a43]">
+                教育经历
+              </h3>
+
+              <div className="mt-3 space-y-1.5">
+                {educations.map((edu) => (
+                  <div
+                    key={edu.title}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-[#f7faff] p-2.5"
+                  >
+                    <Logo org={edu.org} />
+
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">
+                        {edu.title}
+                      </p>
+
+                      <p className="mt-0.5 text-[11px] text-slate-500">
+                        {edu.org.name} · {edu.time}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* 产品实践 */}
-      <section id="products" className="max-w-6xl mx-auto px-6 py-16 border-t border-white/5">
-        <div className="mb-8">
-          <p className="text-[10px] text-zinc-500 tracking-[0.25em]">PRODUCT PRACTICE</p>
-          <h3 className="text-3xl font-bold mt-1">独立全栈产品实践</h3>
-          <p className="mt-2 text-sm text-zinc-400">
-            拒绝纯代码纸上谈兵，实现“想法 ➔ 数字化软件 ➔ 工业级实体”的敏捷闭环验证。
-          </p>
-        </div>
+            {/* 工作 */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
+              <h3 className="text-base font-black text-[#102a43]">
+                工作经历
+              </h3>
 
-        <div className="space-y-12">
-          {products.map((p) => (
-            <div key={p.title} className="grid lg:grid-cols-[300px_minmax(0,1fr)] gap-8 items-start">
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6">
-                <h4 className="text-xl font-bold text-zinc-100">{p.title}</h4>
-                <p className="mt-3 text-xs text-zinc-400 leading-5">{p.desc}</p>
+              <div className="mt-3 space-y-1.5">
+                {experiences.map((exp) => (
+                  <div
+                    key={exp.company}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-[#f7faff] p-2.5"
+                  >
+                    <Logo org={exp.org} />
 
-                <div className="my-4 border-t border-white/10" />
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">
+                        {exp.company}
+                      </p>
 
-                <div className="space-y-2 text-xs text-zinc-300 mb-5">
-                  {p.points.map((pt, ptIdx) => (
-                    <div key={ptIdx} className="leading-5">• {pt}</div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[10px] rounded-full border border-white/10 bg-white/5 text-zinc-400">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {p.images.map((img, idx) => (
-                  <div key={idx} className={img.wide ? "col-span-2" : ""}>
-                    <img
-                      src={img.src}
-                      alt="产品成果真实截图"
-                      className="w-full h-auto block rounded-xl border border-white/10 bg-zinc-950 object-cover"
-                    />
+                      <p className="mt-0.5 text-[11px] text-slate-500">
+                        {exp.title} · {exp.time}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 技术体系纵览 */}
-      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-white/5">
-        <div className="mb-6">
-          <p className="text-[10px] text-zinc-500 tracking-[0.25em]">SKILLS MATRIX</p>
-          <h3 className="text-3xl font-bold mt-1 tracking-wide">全链路工程与设计工具体系</h3>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-          {[
-            ["项目协作与工程管理", "Git / Jira / Postman/ Trello / Xmind / Drawio / Notion"],
-            ["现代全栈与后端开发", "Python / Django / Java / C++ / Android / Kotlin / MySQL / Linux / Docker / Shell"],
-            ["人工智能与计算机视觉", "CNN / YOLO / OpenCV / Pandas / Matplotlib / PINN / LLM / Vibe Coding"],
-            ["工业设计与产品建模", "Blender / Plasticity / SolidWorks / Illustrator / Figma"]
-          ].map(([t, c]) => (
-            <div key={t} className="border border-white/10 rounded-xl p-5 bg-white/5 flex flex-col justify-between hover:border-white/20 transition-colors">
-              <p className="text-zinc-400 mb-3 font-bold tracking-wide">{t}</p>
-              <p className="text-zinc-300 leading-relaxed font-mono">{c}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 🛠️ Contact 联系方式*/}
-      <section id="contact" className="max-w-6xl mx-auto px-6 py-16 border-t border-white/5">
-
-        {/* 抽离到卡片上方的头部说明 */}
-        <div className="mb-8">
-          <p className="text-[10px] text-zinc-500 tracking-[0.25em] mb-1">CONNECT</p>
-          <h3 className="text-3xl font-black mt-1 text-zinc-100">联系沟通</h3>
-          <p className="mt-3 text-sm text-zinc-400 max-w-xl">
-            欢迎通过以下方式交流，成都本地或线上均可快速对接业务合作。
-          </p>
-        </div>
-
-        {/* 纯净的信息联络底座大卡片 */}
-        <div className="border border-white/10 bg-white/5 rounded-2xl p-8 lg:p-10 backdrop-blur-md relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
-
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 text-xs text-left">
-            <div>
-              <p className="text-zinc-500 mb-1.5 font-medium">电子邮箱</p>
-              <p className="font-bold text-zinc-200 tracking-wide text-[13px] font-mono">chiibeii@163.com</p>
-            </div>
-            <div>
-              <p className="text-zinc-500 mb-1.5 font-medium">联系电话</p>
-              <p className="font-bold text-zinc-200 tracking-wide text-[13px] font-mono">+86 17360268450</p>
-            </div>
           </div>
         </div>
-
       </section>
 
-      {/* Footer */}
-      <footer className="text-center py-8 text-[10px] text-zinc-600 border-t border-white/5">
-        © 2026 陈钢 · Built with React & Tailwind CSS
-      </footer>
+      {/* =====================================================
+       * 专业技能
+       * =================================================== */}
+      <section
+        id="skills"
+        className="border-t border-slate-200 bg-[#f3f8fc]"
+      >
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10">
+          <SectionPill tone="blue">专业技能</SectionPill>
 
+          <div className="grid gap-2.5 md:grid-cols-4">
+            {skillGroups.map((group) => (
+              <article
+                key={group.title}
+                className={`rounded-2xl border p-4 sm:p-5 ${group.className}`}
+              >
+                <h3
+                  className={`text-base font-black ${group.titleClass}`}
+                >
+                  {group.title}
+                </h3>
+
+                <div className="my-3 h-px bg-black/10" />
+
+                <div className="space-y-2">
+                  {group.items.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm leading-6 text-slate-700"
+                    >
+                      <span
+                        className={`mt-[8px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${group.dotClass}`}
+                      />
+
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+       * 联系方式
+       * =================================================== */}
+      <section
+        id="contact"
+        className="border-t border-slate-200 bg-white"
+      >
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10">
+          <SectionPill tone="teal">联系方式</SectionPill>
+
+          <div className="grid grid-cols-2 gap-2.5 rounded-2xl border border-slate-200 bg-[#f7faff] p-4 sm:grid-cols-3">
+            <div>
+              <p className="text-[11px] font-bold text-slate-500">
+                邮箱
+              </p>
+
+              <p className="mt-1.5 text-sm font-bold text-slate-800">
+                chiibeii@163.com
+              </p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-bold text-slate-500">
+                电话
+              </p>
+
+              <p className="mt-1.5 text-sm font-bold text-slate-800">
+                +86 173 6026 8450
+              </p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-bold text-slate-500">
+                所在地
+              </p>
+
+              <p className="mt-1.5 text-sm font-bold text-slate-800">
+                四川省 · 成都市
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+       * Footer
+       * =================================================== */}
+      <footer className="border-t border-slate-200 bg-[#f3f8fc]">
+        <div className="mx-auto max-w-6xl px-5 py-5 sm:px-6">
+          <p className="text-[11px] text-slate-400">
+            © 2026 陈钢
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
